@@ -9,12 +9,12 @@ public class BSTSearchTest {
 
     @Test
     public void search() {
-        Node left = new Node(155, null, null);
-        Node right = new Node(345, null, null);
-        Node root = new Node(255, left, right);
+        Node root = BinaryTree.addNode(null, 255);
+        BinaryTree.addNode(root, 155);
+        BinaryTree.addNode(root, 345);
 
         assertNull(BSTSearch.search(root, 34));
-        assertEquals(left, BSTSearch.search(root, 155));
-        assertEquals(right, BSTSearch.search(root, 345));
+        assertEquals(155, BSTSearch.search(root, 155).value);
+        assertEquals(345, BSTSearch.search(root, 345).value);
     }
 }
