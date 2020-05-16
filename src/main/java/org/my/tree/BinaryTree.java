@@ -1,6 +1,7 @@
 package org.my.tree;
 
 public class BinaryTree {
+
     public static Node addNode(Node root, int value) {
         Node node = new Node(value, null, null);
         if (root == null)

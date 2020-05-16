@@ -12,4 +12,12 @@ public class BSTSearch {
             return search(node.right, value);
         }
     }
+
+    public static boolean sameTree(Node tree1, Node tree2) {
+        if (tree1 == null && tree2 == null)
+            return true;
+        if (tree1 == null || tree2 == null)
+            return false;
+        return tree1.value == tree2.value && sameTree(tree1.left, tree2.left) && sameTree(tree1.right, tree2.right);
+    }
 }
