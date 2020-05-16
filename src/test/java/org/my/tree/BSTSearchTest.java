@@ -31,4 +31,12 @@ public class BSTSearchTest {
         BinaryTree.addNode(root2, 345);
         assertFalse(BSTSearch.sameTree(root1, root2));
     }
+
+    @Test
+    public void shouldCalculateHeight() {
+        Node root = BinaryTree.addNode(null, 255);
+        BinaryTree.addNode(root, 155);
+        BinaryTree.addNode(root, 345);
+        assertEquals(2, BSTSearch.height(root));
+    }
 }

@@ -20,4 +20,12 @@ public class BSTSearch {
             return false;
         return tree1.value == tree2.value && sameTree(tree1.left, tree2.left) && sameTree(tree1.right, tree2.right);
     }
+
+    public static int height(Node root) {
+        if (root == null)
+            return 0;
+        int left = height(root.left);
+        int right = height(root.right);
+        return  1 + Math.max(left, right);
+    }
 }
