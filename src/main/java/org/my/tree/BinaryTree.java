@@ -2,24 +2,27 @@ package org.my.tree;
 
 public class BinaryTree {
     public static Node addNode(Node root, int value) {
+        Node node = new Node(value, null, null);
         if (root == null)
-            return new Node(value, null, null);
-        Node node = root;
+            return node;
+
         Node prevNode = root;
+        Node current = root;
         while (prevNode != null) {
-            node = prevNode;
-            if (value < prevNode.value) {
+            current = prevNode;
+            if (value < current.value) {
                 prevNode = prevNode.left;
             } else {
                 prevNode = prevNode.right;
             }
         }
-        Node newNode = new Node(value, null, null);
-        if (value < node.value) {
-            node.left = newNode;
+
+        if (value < current.value) {
+            current.left = node;
         } else {
-            node.right = newNode;
+            current.right = node;
         }
+
         return root;
     }
 }
