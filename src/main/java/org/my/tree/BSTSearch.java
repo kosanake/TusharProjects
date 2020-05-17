@@ -28,4 +28,12 @@ public class BSTSearch {
         int right = height(root.right);
         return  1 + Math.max(left, right);
     }
+
+    public static int size(Node node) {
+        if (node == null)
+            return 0;
+        int left = size(node.left);
+        int right = size(node.right);
+        return left + right + 1;
+    }
 }
