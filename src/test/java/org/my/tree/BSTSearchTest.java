@@ -2,6 +2,10 @@ package org.my.tree;
 
 import org.junit.Test;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class BSTSearchTest {
@@ -46,5 +50,21 @@ public class BSTSearchTest {
         BinaryTree.addNode(root, 155);
         BinaryTree.addNode(root, 345);
         assertEquals(3, BSTSearch.size(root));
+    }
+
+    @Test
+    public void shouldSearchPath() {
+        List<Integer> result = new ArrayList<>();
+        Node root = BinaryTree.addNode(null, 255);
+        BinaryTree.addNode(root, 155);
+        BinaryTree.addNode(root, 345);
+        assertTrue(BSTSearch.rootToLeafSum(root, 410, result));
+        assertArrayEquals(new Object[] {155, 255}, result.toArray());
+        result = new ArrayList<>();
+        assertTrue(BSTSearch.rootToLeafSum(root, 600, result));
+        assertArrayEquals(new Object[] {345, 255}, result.toArray());
+        result = new ArrayList<>();
+        assertFalse(BSTSearch.rootToLeafSum(root, 601, result));
+        assertArrayEquals(new Object[] {}, result.toArray());
     }
 }

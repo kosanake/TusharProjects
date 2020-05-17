@@ -1,5 +1,7 @@
 package org.my.tree;
 
+import java.util.List;
+
 public class BSTSearch {
     public static Node search(Node node, int value) {
         if (node == null) {
@@ -35,5 +37,25 @@ public class BSTSearch {
         int left = size(node.left);
         int right = size(node.right);
         return left + right + 1;
+    }
+
+    public static boolean rootToLeafSum(Node node, int sum, List<Integer> result) {
+        if (node == null) {
+            return false;
+        } else if (node.left == null && node.right == null) {
+            if (sum - node.value == 0) {
+                result.add(node.value);
+                return true;
+            }
+        }
+        if(rootToLeafSum(node.left, sum - node.value, result)) {
+            result.add(node.value);
+            return true;
+        }
+        if (rootToLeafSum(node.right, sum - node.value, result)) {
+            result.add(node.value);
+            return true;
+        }
+        return false;
     }
 }
