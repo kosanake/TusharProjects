@@ -1,8 +1,8 @@
 package org.my.tree;
 
-import java.util.List;
+import java.util.*;
 
-public class BSTSearch {
+public class BSTSearchUtils {
     public static Node search(Node node, int value) {
         if (node == null) {
             return null;
@@ -65,5 +65,24 @@ public class BSTSearch {
         if (node.value < min || node.value > max)
             return false;
         return isBST(node.left, Integer.MIN_VALUE, node.value) && isBST(node.right, node.value, Integer.MAX_VALUE);
+    }
+
+    public static List<Integer> breadthFirstTraversal(Node node) {
+        List<Integer> result = new ArrayList<>();
+        if (node == null)
+            return result;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            Node poll = queue.poll();
+            result.add(poll.value);
+            if (poll.left != null)
+                queue.add(poll.left);
+            if (poll.right != null)
+                queue.add(poll.right);
+        }
+
+        return result;
     }
 }
