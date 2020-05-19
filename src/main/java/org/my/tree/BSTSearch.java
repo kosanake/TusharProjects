@@ -58,4 +58,12 @@ public class BSTSearch {
         }
         return false;
     }
+
+    public static boolean isBST(Node node, int min, int max) {
+        if (node == null)
+            return true;
+        if (node.value < min || node.value > max)
+            return false;
+        return isBST(node.left, Integer.MIN_VALUE, node.value) && isBST(node.right, node.value, Integer.MAX_VALUE);
+    }
 }

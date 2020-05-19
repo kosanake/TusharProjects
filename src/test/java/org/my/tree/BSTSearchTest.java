@@ -67,4 +67,17 @@ public class BSTSearchTest {
         assertFalse(BSTSearch.rootToLeafSum(root, 601, result));
         assertArrayEquals(new Object[] {}, result.toArray());
     }
+
+    @Test
+    public void shouldCheckBST() {
+        Node root = BinaryTree.addNode(null, 255);
+        BinaryTree.addNode(root, 155);
+        BinaryTree.addNode(root, 345);
+        assertTrue(BSTSearch.isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
+        Node l211 = new Node(5, null, null);
+        Node l212 = new Node(10, null, null);
+        Node l11 = new Node(0, l211, l212);
+        root = new Node(1, l11, null);
+        assertFalse(BSTSearch.isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
+    }
 }
