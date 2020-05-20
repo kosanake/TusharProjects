@@ -106,8 +106,32 @@ public class BSTSearchTest {
         List<Integer> integerList = new ArrayList<>();
         while (!integers.isEmpty())
             integerList.add(integers.pop());
-
-
         assertArrayEquals(integerList.toArray(), new Object[]{110, 160, 155, 260, 360, 345, 255});
+    }
+
+    @Test
+    public void shouldPreOrderTraversal() {
+        Node root = BinaryTree.addNode(null, 255);
+        BinaryTree.addNode(root, 155);
+        BinaryTree.addNode(root, 345);
+        BinaryTree.addNode(root, 110);
+        BinaryTree.addNode(root, 160);
+        BinaryTree.addNode(root, 260);
+        BinaryTree.addNode(root, 360);
+        List<Integer> integerList = BSTSearchUtils.preOrderDepthTraversal(root);
+        assertArrayEquals(integerList.toArray(), new Object[]{255, 155, 110, 160, 345, 260, 360});
+    }
+
+    @Test
+    public void shouldInOrderTraversal() {
+        Node root = BinaryTree.addNode(null, 255);
+        BinaryTree.addNode(root, 155);
+        BinaryTree.addNode(root, 345);
+        BinaryTree.addNode(root, 110);
+        BinaryTree.addNode(root, 160);
+        BinaryTree.addNode(root, 260);
+        BinaryTree.addNode(root, 360);
+        List<Integer> integerList = BSTSearchUtils.inOrderDepthTraversal(root);
+        assertArrayEquals(integerList.toArray(), new Object[]{110, 155, 160, 255, 260, 345, 360});
     }
 }

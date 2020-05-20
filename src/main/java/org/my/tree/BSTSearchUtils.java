@@ -102,4 +102,42 @@ public class BSTSearchUtils {
         }
         return s2;
     }
+
+    public static List<Integer> preOrderDepthTraversal(Node node) {
+        List<Integer> result = new ArrayList<>();
+        if (node == null)
+            return result;
+
+        Stack<Node> s = new Stack<>();
+        s.push(node);
+        while (!s.isEmpty()) {
+            Node n = s.pop();
+            result.add(n.value);
+            if (n.right != null)
+                s.push(n.right);
+            if (n.left != null)
+                s.push(n.left);
+        }
+        return result;
+    }
+
+    public static List<Integer> inOrderDepthTraversal(Node node) {
+        List<Integer> result = new ArrayList<>();
+        if (node == null)
+            return result;
+        Stack<Node> s = new Stack<>();
+        while (true) {
+            if (node != null) {
+                s.push(node);
+                node = node.left;
+            } else {
+                if (s.isEmpty())
+                    break;
+                node = s.pop();
+                result.add(node.value);
+                node = node.right;
+            }
+        }
+        return result;
+    }
 }
