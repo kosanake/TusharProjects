@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Stack;
 
 import static org.junit.Assert.*;
 
@@ -91,6 +91,23 @@ public class BSTSearchTest {
         BinaryTree.addNode(root, 260);
         BinaryTree.addNode(root, 360);
         assertArrayEquals(new Object[] {255, 155, 345, 110, 160, 260, 360}, BSTSearchUtils.breadthFirstTraversal(root).toArray());
+    }
 
+    @Test
+    public void shouldPostOrderTraversal() {
+        Node root = BinaryTree.addNode(null, 255);
+        BinaryTree.addNode(root, 155);
+        BinaryTree.addNode(root, 345);
+        BinaryTree.addNode(root, 110);
+        BinaryTree.addNode(root, 160);
+        BinaryTree.addNode(root, 260);
+        BinaryTree.addNode(root, 360);
+        Stack<Integer> integers = BSTSearchUtils.postOrderDepthTraversal(root);
+        List<Integer> integerList = new ArrayList<>();
+        while (!integers.isEmpty())
+            integerList.add(integers.pop());
+
+
+        assertArrayEquals(integerList.toArray(), new Object[]{110, 160, 155, 260, 360, 345, 255});
     }
 }

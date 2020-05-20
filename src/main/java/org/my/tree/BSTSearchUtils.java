@@ -85,4 +85,21 @@ public class BSTSearchUtils {
 
         return result;
     }
+
+    public static Stack<Integer> postOrderDepthTraversal(Node node) {
+        Stack<Node> s1 = new Stack<>();
+        Stack<Integer> s2 = new Stack<>();
+        if (node == null)
+            return null;
+        s1.push(node);
+        while (!s1.isEmpty()) {
+            Node n = s1.pop();
+            s2.push(n.value);
+            if (n.left != null)
+                s1.push(n.left);
+            if (n.right != null)
+                s1.push(n.right);
+        }
+        return s2;
+    }
 }
